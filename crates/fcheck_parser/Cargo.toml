@@ -1,0 +1,17 @@
+[package]
+name = "fcheck_parser"
+version = { workspace = true }
+edition = { workspace = true }
+rust-version = { workspace = true }
+repository = { workspace = true }
+authors = { workspace = true }
+license = { workspace = true }
+
+[dependencies]
+fcheck_io = { path = "../fcheck_io" }
+fcheck_diagnostic = { path = "../fcheck_diagnostic" }
+log = { workspace = true }
+rustpython-parser = { workspace = true }
+
+[lints]
+workspace = true
