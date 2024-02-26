@@ -5,10 +5,18 @@ name = "fcheck_core"
 edition = "2021"
 name = "fcheck"
 path = "src/main.rs"
- 
+
 [dependencies]
-rustpython-parser = "~0.3.0" # pinning is a bit more conservative b/c it's such an important dependency for us
-env_logger = "^0.11.2"
-dotenv = "0.15.0"
-log = "^0.4.20"
-envconfig = "0.10.0"
+rustpython-parser = { workspace = true }
+env_logger = { workspace = true }
+dotenv = { workspace = true }
+log = { workspace = true }
+envconfig = { workspace = true }
+pretty_assertions = { workspace = true }
+
+[dev-dependencies]
+predicates = { workspace = true }
+assert_cmd = { workspace = true }
+
+[lints]
+workspace = true

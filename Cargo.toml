@@ -10,7 +10,15 @@ repository = "https://github.com/andenacitelli/fcheck"
 authors = ["Anden Acitelli <andenacitelli@gmail.com>"]
 license = "MIT"
 
-[workspace.dev-dependencies.cargo-husky]
-version = "1"
-default-features = false # Disable features which are enabled by default
-features = ["precommit-hook", "run-cargo-test", "run-cargo-clippy"]
+[workspace.dependencies]
+rustpython-parser = "~0.3.0" # pinning is a bit more conservative b/c it's such an important dependency for us
+env_logger = "^0.11.2"
+dotenv = "0.15.0"
+log = "^0.4.20"
+envconfig = "0.10.0"
+pretty_assertions = "1.4.0"
+predicates = "3.1.0"
+assert_cmd = "2.0.14"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

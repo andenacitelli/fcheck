@@ -1,5 +1,3 @@
-#![forbid(unsafe_code)]
-
 mod config;
 mod disk;
 mod model;
@@ -39,18 +37,5 @@ fn main() {
     for path in get_file_paths_from_args() {
         debug!("Triggering check on file path {}", path);
         handle_filepath(&path);
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*; // import names from outer scope
-    use log::info;
-
-    #[test]
-    fn basic_test() {
-        let path = "../../samples/basic.py";
-        info!("Opening file at {filepath}", filepath = path);
-        handle_filepath(path)
     }
 }

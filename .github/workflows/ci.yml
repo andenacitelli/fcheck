@@ -1,0 +1,16 @@
+name: CI
+on: push
+
+jobs:
+  test:
+    name: cargo test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy,rustfmt
+      - run: cargo check
+      - run: cargo fmt --check
+      - run: cargo build
+      - run: cargo test
