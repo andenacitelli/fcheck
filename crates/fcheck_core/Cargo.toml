@@ -17,6 +17,7 @@ pretty_assertions = { workspace = true }
 [dev-dependencies]
 predicates = { workspace = true }
 assert_cmd = { workspace = true }
+cargo-husky = { workspace = true }
 
 [lints]
 workspace = true

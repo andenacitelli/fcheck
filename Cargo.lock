@@ -126,6 +126,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "cargo-husky"
+version = "1.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b02b629252fe8ef6460461409564e2c21d0c8e77e0944f3d189ff06c4e932ad"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -270,6 +276,7 @@ name = "fcheck_core"
 version = "0.0.0"
 dependencies = [
  "assert_cmd",
+ "cargo-husky",
  "dotenv",
  "env_logger",
  "envconfig",
