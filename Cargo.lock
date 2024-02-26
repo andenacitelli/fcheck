@@ -321,9 +321,31 @@ dependencies = [
  "dotenv",
  "env_logger",
  "envconfig",
+ "fcheck_parser",
  "log",
  "predicates",
  "pretty_assertions",
+ "rustpython-parser",
+]
+
+[[package]]
+name = "fcheck_diagnostic"
+version = "0.0.0"
+dependencies = [
+ "serde",
+]
+
+[[package]]
+name = "fcheck_io"
+version = "0.0.0"
+
+[[package]]
+name = "fcheck_parser"
+version = "0.0.0"
+dependencies = [
+ "fcheck_diagnostic",
+ "fcheck_io",
+ "log",
  "rustpython-parser",
 ]
 

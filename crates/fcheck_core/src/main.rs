@@ -1,10 +1,9 @@
 mod args;
 mod config;
-mod disk;
-mod model;
 mod parser;
 
 use dotenv::dotenv;
+use fcheck_parser::get_issues_for_file_at_filepath;
 use log::{debug, error};
 use std::env;
 
@@ -18,12 +17,14 @@ fn get_file_paths_from_args() -> Vec<String> {
 }
 
 fn handle_filepath(filepath: &str) {
-    for issue in parser::get_issues_for_file_at_filepath(filepath) {
+    for diagnostic in get_issues_for_file_at_filepath(filepath) {
         error!(
-            "[{filepath}, lineno {lineno}]: {message}",
-            filepath = issue.filepath,
-            lineno = issue.line,
-            message = issue.message
+            "[{kind}, {filepath}, {line}:{column}]: {message}",
+            kind = diagnostic.kind.name,
+            filepath = filepath,
+            line = diagnostic.location.line,
+            column = diagnostic.location.column,
+            message = diagnostic.kind.body
         )
     }
 }

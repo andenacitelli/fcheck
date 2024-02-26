@@ -21,6 +21,7 @@ log = "^0.4.20"
 predicates = "3.1.0"
 pretty_assertions = "1.4.0"
 rustpython-parser = "~0.3.0" # pinning is a bit more conservative b/c it's such an important dependency for us
+serde = "1.0.197"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
