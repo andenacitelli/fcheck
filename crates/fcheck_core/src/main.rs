@@ -3,6 +3,7 @@ mod config;
 mod parser;
 
 use dotenv::dotenv;
+use fcheck_diagnostic::Diagnostic;
 use fcheck_parser::get_issues_for_file_at_filepath;
 use log::{debug, error};
 use std::env;
@@ -16,8 +17,8 @@ fn get_file_paths_from_args() -> Vec<String> {
     paths
 }
 
-fn handle_filepath(filepath: &str) {
-    for diagnostic in get_issues_for_file_at_filepath(filepath) {
+fn handle_diagnostics(filepath: &str, diagnostics: &Vec<Diagnostic>) {
+    for diagnostic in diagnostics {
         error!(
             "[{kind}, {filepath}, {line}:{column}]: {message}",
             kind = diagnostic.kind.name,
@@ -26,6 +27,23 @@ fn handle_filepath(filepath: &str) {
             column = diagnostic.location.column,
             message = diagnostic.kind.body
         )
+    }
+}
+
+fn handle_filepath(filepath: &str) -> i32 {
+    match get_issues_for_file_at_filepath(filepath) {
+        Ok(diagnostics) => {
+            handle_diagnostics(filepath, &diagnostics);
+            0
+        }
+        Err(error) => {
+            error!(
+                "[{filepath}] Encountered syntax error that prevented further parsing. Error:\n{error}",
+                filepath = filepath,
+                error = error.error,
+            );
+            1
+        }
     }
 }
 
@@ -38,8 +56,16 @@ fn main() {
     println!("Processing Files {:?}", args.files);
 
     // Actually run validations
+    let mut any_failed = false;
     for path in get_file_paths_from_args() {
         debug!("Triggering check on file path {}", path);
-        handle_filepath(&path);
+        let code = handle_filepath(&path);
+        if code != 0 {
+            any_failed = true;
+        }
+    }
+
+    if any_failed {
+        std::process::exit(1);
     }
 }

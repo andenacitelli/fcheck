@@ -8,7 +8,7 @@ path = "src/main.rs"
 
 [dependencies]
 fcheck_parser = { path = "../fcheck_parser" }
-
+fcheck_diagnostic = { path = "../fcheck_diagnostic" }
 rustpython-parser = { workspace = true }
 env_logger = { workspace = true }
 dotenv = { workspace = true }

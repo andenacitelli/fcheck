@@ -321,6 +321,7 @@ dependencies = [
  "dotenv",
  "env_logger",
  "envconfig",
+ "fcheck_diagnostic",
  "fcheck_parser",
  "log",
  "predicates",

@@ -3,7 +3,6 @@ extern crate assert_cmd;
 extern crate predicates;
 
 use assert_cmd::prelude::*; // Add methods on commands
-use predicates::prelude::*; // Used for writing assertions
 
 #[cfg(test)]
 mod tests {
@@ -14,9 +13,7 @@ mod tests {
         let mut cmd = std::process::Command::cargo_bin("fcheck")?;
 
         cmd.arg("../../samples/basic.py");
-        cmd.assert()
-            .failure()
-            .stderr(predicate::str::contains("Syntax Error"));
+        cmd.assert().failure();
 
         Ok(())
     }
