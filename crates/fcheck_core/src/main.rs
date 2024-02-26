@@ -1,3 +1,4 @@
+mod args;
 mod config;
 mod disk;
 mod model;
@@ -28,10 +29,12 @@ fn handle_filepath(filepath: &str) {
 }
 
 fn main() {
-    // TODO: argv setup should happen here
     dotenv().ok(); // load .env
     config::validate(); // statically validate environment variables
     env_logger::init(); // env_logger is contextual on RUST_LOG env var
+
+    let args = args::parse();
+    println!("Processing Files {:?}", args.files);
 
     // Actually run validations
     for path in get_file_paths_from_args() {

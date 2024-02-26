@@ -13,6 +13,7 @@ dotenv = { workspace = true }
 log = { workspace = true }
 envconfig = { workspace = true }
 pretty_assertions = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
 
 [dev-dependencies]
 predicates = { workspace = true }
