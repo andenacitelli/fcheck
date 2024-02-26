@@ -4,8 +4,11 @@ name = "fcheck_core"
 [[bin]]
 edition = "2021"
 name = "fcheck"
-path = "./src/main.rs"
-
+path = "src/main.rs"
+ 
 [dependencies]
-rustpython-parser = { version = "0.3.0" }
-log = "0.4.20"
+rustpython-parser = "~0.3.0" # pinning is a bit more conservative b/c it's such an important dependency for us
+env_logger = "^0.11.2"
+dotenv = "0.15.0"
+log = "^0.4.20"
+envconfig = "0.10.0"

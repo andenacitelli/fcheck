@@ -1,6 +1,9 @@
 # Transient / Compiled / Generated / etc.
 /target
 
+# Sensitive / user provided
+/.env
+
 # Editors
 .idea/
 .vscode/
